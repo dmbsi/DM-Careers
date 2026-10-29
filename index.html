@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Careers | DynamicMinds Business Solutions Inc.</title>
+<meta name="description" content="Careers at DynamicMinds Business Solutions Inc. – Accounting & Cybersecurity Services. Office in Bicutan, Parañaque City, Metro Manila.">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root{
+    --green:#1B7D35;
+    --green-dark:#145f28;
+    --gold:#A39E1E;
+    --gold-light:#f6f5e3;
+    --white:#FFFFFF;
+    --text:#222;
+    --muted:#5a5a5a;
+    --border:#e3e3e3;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--white);
+    line-height:1.6;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+
+  /* ===== HEADER (always plain white) ===== */
+  .site-header{
+    background:#FFFFFF;
+    border-bottom:3px solid var(--gold);
+  }
+  .site-header .wrap{
+    display:flex;align-items:center;gap:14px;
+    padding-top:12px;padding-bottom:12px;
+  }
+  .site-header img{height:60px;width:auto;display:block;}
+  .brand-name{font-size:1.25rem;font-weight:700;color:var(--green);line-height:1.2;}
+  .brand-tagline{font-size:.9rem;color:var(--muted);}
+
+  /* ===== INTRO ===== */
+  .hero{padding:36px 0 20px;}
+  h1,h2{color:var(--green);line-height:1.25;}
+  h1{font-size:2rem;margin:0 0 12px;}
+  h2{font-size:1.4rem;margin:0 0 12px;}
+  .hero p{margin:0 0 16px;font-size:1.05rem;}
+  .location{
+    display:inline-block;
+    border-left:4px solid var(--gold);
+    background:var(--gold-light);
+    padding:8px 14px;border-radius:4px;
+    font-weight:600;
+  }
+
+  /* ===== FILTERS ===== */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 18px;}
+  .filter-btn{
+    border:2px solid var(--green);background:var(--white);color:var(--green);
+    padding:8px 16px;border-radius:999px;font-size:.95rem;font-weight:600;cursor:pointer;
+  }
+  .filter-btn:hover{background:#eef6f0;}
+  .filter-btn.active{background:var(--green);color:var(--white);}
+
+  /* ===== JOB CARDS ===== */
+  .jobs{display:flex;flex-direction:column;gap:16px;margin-bottom:36px;}
+  .job-card{
+    border:1px solid var(--border);
+    border-top:4px solid var(--gold);
+    border-radius:8px;background:var(--white);
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+  }
+  .job-toggle{
+    all:unset;box-sizing:border-box;display:block;width:100%;
+    padding:18px 20px;cursor:pointer;position:relative;
+  }
+  .job-toggle:focus-visible{outline:3px solid var(--gold);outline-offset:-3px;border-radius:8px;}
+  .job-title{font-size:1.2rem;font-weight:700;color:var(--green);margin:0 0 6px;padding-right:110px;}
+  .job-line{margin:2px 0;color:var(--text);}
+  .job-category{
+    display:inline-block;margin-top:8px;font-size:.78rem;font-weight:600;
+    color:#5c5910;background:var(--gold-light);border:1px solid var(--gold);
+    border-radius:999px;padding:2px 10px;
+  }
+  .toggle-hint{
+    position:absolute;top:18px;right:20px;font-size:.85rem;font-weight:600;color:var(--gold);
+  }
+  .job-details{padding:0 20px 20px;border-top:1px dashed var(--border);}
+  .job-details[hidden]{display:none;}
+  .job-details h3{color:var(--green);font-size:1.05rem;margin:18px 0 6px;}
+  .job-details ul{margin:0;padding-left:20px;}
+  .job-details li{margin:3px 0;}
+  .job-details p{margin:14px 0 0;}
+
+  /* ===== APPLY BOX ===== */
+  .apply-box{
+    margin-top:18px;padding:16px;border:1px solid var(--gold);
+    border-radius:8px;background:#fcfcf6;
+  }
+  .btn{
+    display:inline-block;background:var(--green);color:var(--white);
+    text-decoration:none;font-weight:700;padding:10px 20px;border-radius:6px;
+    border:none;cursor:pointer;font-size:1rem;
+  }
+  .btn:hover{background:var(--green-dark);}
+  .apply-note{margin:10px 0 0;}
+  .only-email{font-size:.85rem;color:var(--muted);margin:4px 0 12px;font-style:italic;}
+  .apply-info{margin:4px 0;font-size:.95rem;word-break:break-word;}
+  .copy-btn{
+    margin-left:6px;font-size:.8rem;padding:3px 10px;border-radius:4px;cursor:pointer;
+    border:1px solid var(--gold);background:var(--white);color:#5c5910;font-weight:600;
+  }
+  .copy-btn:hover{background:var(--gold-light);}
+  .empty{color:var(--muted);font-style:italic;}
+
+  /* ===== HOW TO APPLY ===== */
+  .how-to{
+    border:2px solid var(--gold);border-radius:8px;padding:20px;margin-bottom:36px;
+  }
+  .how-to p{margin:0;}
+
+  /* ===== FOOTER ===== */
+  .site-footer{background:var(--green);color:var(--white);padding:22px 0;font-size:.92rem;}
+  .site-footer p{margin:4px 0;}
+  .site-footer .copy{margin-top:12px;opacity:.85;font-size:.82rem;border-top:1px solid var(--gold);padding-top:10px;}
+
+  @media (max-width:600px){
+    .site-header img{height:48px;}
+    .brand-name{font-size:1.05rem;}
+    h1{font-size:1.6rem;}
+    .job-title{padding-right:0;}
+    .toggle-hint{position:static;display:block;margin-top:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <img src="logo.png" alt="DynamicMinds Business Solutions Inc. logo">
+    <div>
+      <div class="brand-name" id="brandName">DynamicMinds Business Solutions Inc.</div>
+      <div class="brand-tagline" id="brandTagline">Accounting &amp; Cybersecurity Services</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Join Our Team</h1>
+    <p id="introText"></p>
+    <div class="location">📍 Bicutan, Parañaque City, Metro Manila, Philippines</div>
+  </section>
+
+  <h2>Open Positions</h2>
+  <div class="filters" id="filters"></div>
+  <div class="jobs" id="jobList"></div>
+
+  <section class="how-to">
+    <h2>How to Apply</h2>
+    <p>Send your CV/Resume to <strong id="howToEmail"></strong> – Subject: <strong>Job Application – [Position Title]</strong></p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Only shortlisted applicants will be contacted.</p>
+    <p>We never ask applicants for any payment.</p>
+    <p>Your information will be handled in accordance with the Data Privacy Act of 2012 (RA 10173).</p>
+    <p class="copy" id="copyright"></p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   EDIT HERE: company details
+   ========================================================= */
+const COMPANY_NAME = "DynamicMinds Business Solutions Inc.";
+const TAGLINE = "Accounting & Cybersecurity Services";
+const APPLY_EMAIL = "talents@dynamicminds.com.ph";
+
+/* =========================================================
+   EDIT HERE: job list
+   To add a job, copy one { ... } block, paste it, and change the text.
+   To remove a job, delete its whole { ... } block (and its comma).
+   - category must be one of the FILTERS names below.
+   - subjectTitle is the job title used in the email subject.
+   - pay/notes are optional: leave "offer" as [] and "notes" as [] if none.
+   ========================================================= */
+const JOBS = [
+  {
+    title: "ACCOUNTING ASSISTANT",
+    subjectTitle: "Accounting Assistant",
+    category: "Accounting",
+    line2: "💼 Full-time | Monday to Saturday | Hybrid",
+    line3: "📍 Bicutan, Parañaque City, Metro Manila",
+    intro: "DynamicMinds Business Solutions Inc. is a multidisciplinary firm dedicated to helping businesses thrive, with integrated solutions in Cybersecurity & IT; Accounting, Audit & Advisory; and Interior Styling. We're looking for a detail-oriented Accounting Assistant to join our Accounting, Audit & Advisory team. You'll maintain accurate books, prepare reports and reconcile accounts for multiple client accounts, while keeping every client's information accurate and confidential.",
+    duties: [
+      "Maintain accurate and up-to-date financial records for multiple client accounts",
+      "Prepare periodic financial reports and summaries for clients and internal review",
+      "Reconcile accounts and resolve discrepancies on time",
+      "Assist with budgeting and monitor each client's compliance with financial regulations",
+      "Support month-end and year-end closing across client accounts",
+      "Serve as a point of contact for client queries, responding promptly and professionally",
+      "Communicate financial information clearly to clients, team members and stakeholders"
+    ],
+    requirements: [
+      "A bachelor's degree in Accounting, Finance, Business Administration or a related field",
+      "At least 2 years of experience in a similar role; experience in an accounting firm or multi-client setting is a plus",
+      "Strong knowledge of accounting, finance and bookkeeping principles",
+      "Working knowledge of budgeting, financial reporting and regulatory compliance",
+      "Good client-handling skills, with the ability to resolve issues promptly",
+      "Excellent attention to detail and the ability to handle several client accounts at once",
+      "Clear written and verbal communication skills, including explaining financial information to clients and senior leaders",
+      "Preferably residing in Parañaque or nearby cities (e.g. Taguig, Pasay)"
+    ],
+    offer: [],
+    notes: []
+  },
+  {
+    title: "LIAISON OFFICER/MESSENGER",
+    subjectTitle: "Liaison Officer/Messenger",
+    category: "Admin & Liaison",
+    line2: "💼 Full-time | Monday to Friday | On-site, with daily field work",
+    line3: "📍 Office: Bicutan, Parañaque City (daily field work across Metro Manila)",
+    intro: "DynamicMinds Business Solutions Inc. is looking for a Liaison Officer/Messenger to handle government transactions for our firm and our clients – from filing to follow-up and release.",
+    duties: [
+      "Handle registrations, renewals, filings and permits with BIR, SEC, city halls, SSS, PhilHealth, Pag-IBIG and DOLE",
+      "Coordinate with agency officers to follow up applications and resolve deficiencies or notices",
+      "Check that documents are complete before filing, and track deadlines",
+      "Keep a daily log of transactions, and liquidate cash advances on time with official receipts",
+      "Deliver and pick up documents and permits when needed"
+    ],
+    requirements: [
+      "A graduate of any course or at least college level, with strong analytical skills",
+      "At least 1 year of liaison experience with government agencies; accounting firm experience is a plus",
+      "Familiar with BIR, SEC, business permit and SSS/PhilHealth/Pag-IBIG processes",
+      "Confident with government officers, honest and organized",
+      "Willing to do daily field work across Metro Manila",
+      "Must own a motorcycle with complete OR/CR, and hold a valid driver's license",
+      "Preferably residing in Parañaque or nearby cities (e.g. Taguig, Pasay)"
+    ],
+    offer: [
+      "₱1,200 per day (₱850 basic + ₱250 repair allowance + ₱100 meal allowance)",
+      "Plus daily gas reimbursement",
+      "Monday to Friday schedule"
+    ],
+    notes: [
+      "Please note that while our office is in Bicutan, Parañaque, the job itself involves field work across Metro Manila (BIR, SSS, SEC, and City Hall in various cities)."
+    ]
+  },
+  {
+    title: "SOC ANALYST – L1 (TIER 1)",
+    subjectTitle: "SOC Analyst L1",
+    category: "Cybersecurity & IT",
+    line2: "💼 Full-time | Hybrid | Entry level (0–2 years)",
+    line3: "📍 Bicutan, Parañaque City, Metro Manila",
+    intro: "DynamicMinds Business Solutions Inc. is a multidisciplinary firm dedicated to helping businesses thrive, with integrated solutions in Cybersecurity & IT; Accounting, Audit & Advisory; and Interior Styling. We're looking for a SOC Analyst (L1) to join our Cyber Team – the front line of our Security Operations Center, monitoring alerts, triaging threats and escalating with precision.",
+    duties: [
+      "Monitor security alerts in the SIEM (Splunk / Microsoft Sentinel / QRadar)",
+      "Triage alerts and investigate suspicious activity such as phishing, malware and brute-force attempts",
+      "Analyse Windows Event and Linux logs to confirm or rule out threats",
+      "Escalate confirmed incidents using playbooks, with clear handovers to the next tier",
+      "Document findings and keep incident tickets up to date"
+    ],
+    requirements: [
+      "0–2 years of experience in IT, networking or security operations – entry-level applicants welcome",
+      "Networking fundamentals: TCP/IP, DNS, ports and protocols",
+      "SIEM monitoring experience or training (Splunk / Sentinel / QRadar)",
+      "Log analysis skills – Windows Event and Linux logs",
+      "Threat awareness: phishing, malware and brute-force attacks",
+      "Familiarity with the MITRE ATT&CK framework",
+      "Able to follow triage and escalation playbooks and give clear handovers",
+      "Security+, Network+ or CySA+ certification is a plus, not required"
+    ],
+    offer: [],
+    notes: []
+  }
+];
+
+/* Filter buttons (first one shows everything) */
+const FILTERS = ["All", "Accounting", "Cybersecurity & IT", "Admin & Liaison"];
+
+/* =========================================================
+   No need to edit below this line
+   ========================================================= */
+const INTRO = COMPANY_NAME + " is a multidisciplinary firm dedicated to helping businesses thrive. We deliver proven, integrated solutions across three core areas: Cybersecurity & IT; Accounting, Audit & Advisory; and Interior Styling – giving our clients the tools, insight and support they need to grow with confidence.";
+
+function el(tag, className, text){
+  const e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+
+function addList(parent, heading, items){
+  if (!items || !items.length) return;
+  parent.appendChild(el("h3", "", heading));
+  const ul = el("ul");
+  items.forEach(function(i){ ul.appendChild(el("li", "", i)); });
+  parent.appendChild(ul);
+}
+
+function copyText(text, button){
+  function done(){
+    const old = button.textContent;
+    button.textContent = "Copied!";
+    setTimeout(function(){ button.textContent = old; }, 1500);
+  }
+  function fallback(){
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "absolute"; ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); done(); }
+    catch (e) { window.prompt("Copy this subject:", text); }
+    document.body.removeChild(ta);
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done, fallback);
+  } else {
+    fallback();
+  }
+}
+
+function buildCard(job, index){
+  const card = el("article", "job-card");
+  card.dataset.category = job.category;
+
+  const detailsId = "job-details-" + index;
+  const toggle = el("button", "job-toggle");
+  toggle.type = "button";
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-controls", detailsId);
+  toggle.appendChild(el("h3", "job-title", job.title));
+  toggle.appendChild(el("p", "job-line", job.line2));
+  toggle.appendChild(el("p", "job-line", job.line3));
+  toggle.appendChild(el("span", "job-category", job.category));
+  const hint = el("span", "toggle-hint", "View details ▾");
+  toggle.appendChild(hint);
+  card.appendChild(toggle);
+
+  const details = el("div", "job-details");
+  details.id = detailsId;
+  details.hidden = true;
+  if (job.intro) details.appendChild(el("p", "", job.intro));
+  addList(details, "What you'll do", job.duties);
+  addList(details, "What we're looking for", job.requirements);
+  addList(details, "What we offer", job.offer);
+  (job.notes || []).forEach(function(n){ details.appendChild(el("p", "", n)); });
+
+  const subject = "Job Application – " + job.subjectTitle;
+  const box = el("div", "apply-box");
+  const btn = el("a", "btn", "Apply by email");
+  btn.href = "mailto:" + APPLY_EMAIL + "?subject=" + encodeURIComponent(subject);
+  box.appendChild(btn);
+  box.appendChild(el("p", "only-email", "Only resumes sent via email will be entertained."));
+  box.appendChild(el("p", "apply-note", "Send your updated résumé/CV and contact details (mobile number and email address)."));
+  box.appendChild(el("p", "apply-info", "Email: " + APPLY_EMAIL));
+  const subjLine = el("p", "apply-info", "Email subject: " + subject);
+  const copyBtn = el("button", "copy-btn", "Copy subject");
+  copyBtn.type = "button";
+  copyBtn.addEventListener("click", function(){ copyText(subject, copyBtn); });
+  subjLine.appendChild(copyBtn);
+  box.appendChild(subjLine);
+  details.appendChild(box);
+  card.appendChild(details);
+
+  toggle.addEventListener("click", function(){
+    const open = details.hidden;
+    details.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    hint.textContent = open ? "Hide details ▴" : "View details ▾";
+  });
+
+  return card;
+}
+
+function renderJobs(filter){
+  const list = document.getElementById("jobList");
+  list.innerHTML = "";
+  const shown = JOBS.filter(function(j){ return filter === "All" || j.category === filter; });
+  if (!shown.length) {
+    list.appendChild(el("p", "empty", "No open positions in this category right now."));
+    return;
+  }
+  shown.forEach(function(job, i){ list.appendChild(buildCard(job, filter.length + "-" + i)); });
+}
+
+function renderFilters(){
+  const wrap = document.getElementById("filters");
+  FILTERS.forEach(function(name, i){
+    const b = el("button", "filter-btn" + (i === 0 ? " active" : ""), name);
+    b.type = "button";
+    b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+    b.addEventListener("click", function(){
+      wrap.querySelectorAll(".filter-btn").forEach(function(x){
+        x.classList.remove("active"); x.setAttribute("aria-pressed", "false");
+      });
+      b.classList.add("active"); b.setAttribute("aria-pressed", "true");
+      renderJobs(name);
+    });
+    wrap.appendChild(b);
+  });
+}
+
+document.title = "Careers | " + COMPANY_NAME;
+document.getElementById("brandName").textContent = COMPANY_NAME;
+document.getElementById("brandTagline").textContent = TAGLINE;
+document.querySelector(".site-header img").alt = COMPANY_NAME + " logo";
+document.getElementById("introText").textContent = INTRO;
+document.getElementById("howToEmail").textContent = APPLY_EMAIL;
+document.getElementById("copyright").textContent = "© " + new Date().getFullYear() + " " + COMPANY_NAME;
+renderFilters();
+renderJobs("All");
+</script>
+</body>
+</html>
