@@ -36,7 +36,12 @@
     display:flex;align-items:center;gap:14px;
     padding-top:12px;padding-bottom:12px;
   }
-  .site-header img{height:120px;width:auto;display:block;}
+  .site-header img{
+    height:150px;width:auto;display:block;
+    /* discourage saving: no drag, no select, no long-press menu on phones */
+    -webkit-user-drag:none;user-select:none;-webkit-user-select:none;
+    -webkit-touch-callout:none;
+  }
   .brand-name{font-size:1.25rem;font-weight:700;color:var(--green);line-height:1.2;}
   .brand-tagline{font-size:.9rem;color:var(--muted);}
 
@@ -126,7 +131,7 @@
   .site-footer .copy{margin-top:12px;opacity:.85;font-size:.82rem;border-top:1px solid var(--gold);padding-top:10px;}
 
   @media (max-width:600px){
-    .site-header img{height:90px;}
+    .site-header img{height:100px;}
     .brand-name{font-size:1.05rem;}
     h1{font-size:1.6rem;}
     .job-title{padding-right:0;}
@@ -138,7 +143,7 @@
 
 <header class="site-header">
   <div class="wrap">
-    <img src="logo.png" alt="DynamicMinds Business Solutions Inc. logo">
+    <img src="logo.png" alt="DynamicMinds Business Solutions Inc. logo" draggable="false" id="siteLogo">
     <div>
       <div class="brand-name" id="brandName">DynamicMinds Business Solutions Inc.</div>
       <div class="brand-tagline" id="brandTagline">Accounting &amp; Cybersecurity Services</div>
@@ -414,6 +419,14 @@ document.querySelector(".site-header img").alt = COMPANY_NAME + " logo";
 document.getElementById("introText").textContent = INTRO;
 document.getElementById("howToEmail").textContent = APPLY_EMAIL;
 document.getElementById("copyright").textContent = "© " + new Date().getFullYear() + " " + COMPANY_NAME;
+/* Discourage saving the logo: block right-click and dragging on it */
+(function(){
+  const logo = document.getElementById("siteLogo");
+  ["contextmenu", "dragstart"].forEach(function(evt){
+    logo.addEventListener(evt, function(e){ e.preventDefault(); });
+  });
+})();
+
 renderFilters();
 renderJobs("All");
 </script>
